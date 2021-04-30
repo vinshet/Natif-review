@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Minor view</title>
+
+    <link href="/plugins/natif-review/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/plugins/natif-review/resource/css/animate.css" rel="stylesheet">
+
+    <link href="/plugins/natif-review/resource/css/plugins/footable/footable.bootstrap.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/plugins/datapicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/style.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/documents.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.css" rel="stylesheet">
+
+</head>
+
+<body class="md-skin">
+
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="#" onclick="resetandlogout()">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Documents</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/plugins/natif-review/resource/documents.html">Documents</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong><span id="documentid"></span></strong>
+                    </li>
+                </ol>
+                <br />
+                <button type="button" class="btn btn-outline btn-primary" onclick="pzoom.moveTo(0,0);pzoom.smoothZoomAbs(0,0,1);">Zoom Reset</button>
+                (Zoom with Alt+wheel, pan with Alt+drag)
+            </div>
+            <div class="col-lg-2">
+                <div class="container d-flex h-100">
+                    <div class="row justify-content-center align-self-center" id="changesbutton" style="display:none;">
+                        <button type="button" class="btn btn-block btn-outline btn-primary" id="save-changes" onclick="saveChanges();">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="res-wrapper">
+            <div class="row animated fadeInLeft">
+                <div class="col-lg-6">
+                    <div class="ibox">
+                        <!--div class="ibox-title"></div-->
+                        <div class="no-padding border-left-right" id="zoomwrapper">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li><a class="nav-link nav-nodisplay" id="tab_extract" data-toggle="tab" href="#tab-1">Extractions</a></li>
+                            <li><a class="nav-link nav-nodisplay" id="tab_ocr" data-toggle="tab" href="#tab-2">Boxes</a></li>
+                            <li><a class="nav-link nav-nodisplay" id="tab_links" data-toggle="tab" href="#tab-3">Links</a></li>
+                            <li><a class="nav-link nav-nodisplay" id="tab_pps" data-toggle="tab" href="#tab-4">PPS</a></li>
+                            <li><a class="nav-link nav-nodisplay" id="tab_ocrboxes" data-toggle="tab" href="#tab-5">OCR</a></li>
+                            <li><a class="nav-link nav-nodisplay" id="tab_data" data-toggle="tab" href="#tab-6">Data</a></li>
+                        </ul>
+                        <div class="tab-content" id="tab_content">
+                            <div id="tab-1" name="tab_content_extract" class="tab-pane">
+                                <div class="panel-body"></div>
+                            </div>
+                            <div id="tab-2" name="tab_content_ocr" class="tab-pane">
+                                <div class="panel-body" id="tab_content_ocr_body"></div>
+                            </div>
+                            <div id="tab-3" name="tab_links_ocr" class="tab-pane">
+                                <div class="panel-body" id="tab_content_links_body"></div>
+                            </div>
+                            <div id="tab-4" name="tab_pps" class="tab-pane">
+                                <div class="panel-body" id="tab_content_pps">
+                                    <div class="" id="PPS_create">
+                                        <div class="row">
+                                            <div class="col-lg-8 form-group">
+                                                <select class="form-control m-b" name="pps" id="PPS_status">
+                                                        <option value="manual" selected>Manual</option>
+                                                        <option value="reviewed">Reviewed</option>
+                                                        <option value="toreview">To Review</option>
+                                                        <option value="warning">Warning</option>
+                                                        <option value="rejected">Rejected</option>
+                                                </select>
+                                            </div>
+                                             <div class="col-lg-4 form-group">
+                                                 <button class="btn btn-primary" type="button" onclick="createPPS()">Create PPS</button>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">Comment</span>
+                                          </div>
+                                          <textarea class="form-control" aria-label="With textarea" id="PPS_comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown" id="PPS_dropdown">
+                                    </div>
+                                    <div class="" id="PPS_expand">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-5" name="tab_ocrboxes" class="tab-pane">
+                                <div class="panel-body" id="tab_content_ocrboxes">
+                                    <input type="radio" name="OCRdisplay" checked onclick="load_tab_ocrboxes();"/> Display boxes over origin Layout<br />
+                                    <input type="radio" name="OCRdisplay" onclick="load_virtual_ocrboxes();"/> Display overlayed text (experimental)<br />
+                                </div>
+                            </div>
+                            <div id="tab-6" name="tab_data" class="tab-pane">
+                                <div class="panel-body" id="tab_content_data"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+    <script src="/plugins/natif-review/resource/js/jquery-3.1.1.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/jquery-ui.min.js"></script>
+    <script src="/plugins/natif-review/resource//plugins/natif-idp/resource/js/panzoom.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.session.js"></script>
+    <script src="/plugins/natif-review/resource/js/conf.js"></script>
+    <script src="/plugins/natif-review/resource/js/selection.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.sessioncheck.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/scrollto/jquery.scrollTo.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="/plugins/natif-review/resource/js/inspinia.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/pace/pace.min.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/footable/footable.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+<script src="/plugins/natif-review/resource/js/jquery-tablednd.js"></script>
+<script src="/plugins/natif-review/resource/js/document.js"></script>
+-
+</body>
+
+</html>

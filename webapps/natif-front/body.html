@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>natif.ai | Login</title>
+
+    <link href="/plugins/natif-review/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/plugins/natif-review/resource/css/animate.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/style.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.css" rel="stylesheet">
+    <!-- Mainly scripts -->
+</head>
+
+
+<body class="gray-bg">
+    <div>
+
+    </div>
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div class="container p-5">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="mx-auto d-block w-100" src="/plugins/natif-review/resource/css/patterns/natif-n-logo.png">
+                    </div>
+                </div>
+            </div>
+            <h3>Welcome to natif.ai</h3>
+            <p>Read and derive knowledge from your business documents with intelligent document processing (IDP).
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <p>Login in to put AI to work.</p>
+            <form class="m-t" role="form" id="page_form" onsubmit="return false">
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a href="https://account.natif.ai/auth/realms/public/login-actions/reset-credentials" target="_blank"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/plugins/natif-review/resource/register.html">Create an account</a>
+            </form>
+            <p class="m-t"> <small>contact us at account@natif.ai</small> </p>
+            <p class="m-t"> <small>natif.ai GmbH &copy; 2019-2021</small> </p>
+        </div>
+    </div>
+    <script src="/plugins/natif-review/resource/js/jquery-3.1.1.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.session.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/conf.js"></script>
+    <script>
+        function get_account(access_token)
+        {
+            $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    type: 'GET',
+                    headers: {Authorization:'Bearer '+access_token},
+                    url: api_host+'/account/',
+                    success:function(data){console.log(data);$.session.set("roles", data.roles);window.location.href = "/plugins/natif-review/resource/documents.html";},
+                    fail:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});},
+                    error:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});}
+                })
+        }
+        $(document).ready(function(){
+            if($.session.get('msg_session')!=undefined)
+            {
+                toastr.warning($.session.get('msg_session'), {timeOut: 5000});
+                $.session.clear();
+            }
+
+
+            $("#page_form").submit(function(){
+
+               $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: {
+                        username : $("#email").val(),
+                        password : $("#password").val(),
+                        grant_type: 'password',
+                        scope:'capturing_read capturing_write postprocessing'
+                    },
+                    type: 'POST',
+                    url: api_host+'/token',
+                    success:function(data){$.session.clear();$.session.set('access_token', data.access_token);get_account(data.access_token)},
+                    fail:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});},
+                    error:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});}
+                })
+
+            });
+        });
+    </script>
+</body>
+
+</html>

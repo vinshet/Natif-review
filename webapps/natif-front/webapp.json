@@ -1,0 +1,14 @@
+// This file is the descriptor for webapp natif-front
+{
+    "meta": {
+        "label": "Natif front-end",
+        "description": "Admin interface for the Intelligent Document Processing",
+        "icon": "icon-code"
+    },
+
+    "baseType": "STANDARD", // WARNING: do not change
+    "hasBackend": "false",
+    "noJSSecurity": "false",
+    "standardWebAppLibraries": ["jquery","dataiku"]
+
+}

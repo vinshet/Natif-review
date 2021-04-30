@@ -1,0 +1,519 @@
+{
+   "Attributes":{
+      "Customer":{
+         "Customer ID":"HD_CUS_CUSID",
+         "Name":"HD_CUS_NAME",
+         "Address Line 1":"HD_CUS_ADL1",
+         "Address Line 2":"HD_CUS_ADL2",
+         "Zip":"HD_CUS_ZIP",
+         "City":"HD_CUS_CITY",
+         "Country":"HD_CUS_COUNTRY",
+         "Tel":"HD_CUS_TEL",
+         "Fax":"HD_CUS_FAX"
+      },
+      "Supplier":{
+         "Name":"HD_SUP_NAME",
+         "Address Line 1":"HD_SUP_ADL1",
+         "Address Line 2":"HD_SUP_ADL2",
+         "Zip":"HD_SUP_ZIP",
+         "City":"HD_SUP_CITY",
+         "Country":"HD_SUP_COUNTRY",
+         "Tel":"HD_SUP_TEL",
+         "Fax":"HD_SUP_FAX",
+         "VAT ID":"HD_SUP_VAT",
+         "Tax ID":"HD_SUP_TAX",
+         "Iban":"HD_SUP_IBAN",
+         "Bic":"HD_SUP_BIC",
+         "Contact":"HD_SUP_CONT"
+      },
+      "Articles":{
+         "Position":"HD_ART_POS",
+         "Supplier SKU":"HD_ART_SKU",
+         "Description 1":"HD_ART_DESC1",
+         "Quantity":"HD_ART_QUAT",
+         "Unit price":"HD_ART_UNPRIC",
+         "Unit discounted price":"HD_ART_UNDISPRIC",
+         "Unit total price":"HD_ART_UNTOT",
+         "Description 2":"HD_ART_DESC2",
+         "EAN":"HD_ART_EAN",
+         "Customs rate":"HD_ART_CUSTORAT"
+      },
+      "General":{
+         "Delivery date":"HD_GEN_DELDATE",
+         "Order date":"HD_GEN_ORDDATE",
+         "Order confirmation date":"HD_GEN_CONFDATE",
+         "Payment method":"HD_GEN_PAYMET",
+         "Due date":"HD_GEN_DUEDATE",
+         "Payment method":"HD_GEN_PAYMET",
+         "Tax code":"HD_GEN_TAXCOD",
+         "Tax rate":"HD_GEN_TAXRAT",
+         "Tax amount":"HD_GEN_TAXAMO",
+         "Net amount":"HD_GEN_NETAMO",
+         "Gross amount":"HD_GEN_GROAMO",
+         "Number of articles":"HD_GEN_NUMART",
+         "Confirmation number":"HD_GEN_CONFNUM",
+         "Order number":"HD_GEN_ORDNUM",
+         "Delivery method":"HD_GEN_DELMET",
+         "Delivery conditions":"HD_GEN_DELCOND",
+         "Delivery carrier":"HD_GEN_DELCAR",
+         "Delivery costs":"HD_GEN_DELCOST",
+         "Discount€":"HD_GEN_DISCEUR",
+         "Discount%":"HD_GEN_DISCPER",
+         "Currency":"HD_GEN_CURR"
+      },
+      "Early payment benefit":{
+         "Date/Period":"HD_EPB_DATE",
+         "Discount %":"HD_EPB_DISCPER",
+         "Discount €":"HD_EPB_DISCEUR",
+         "Base amount":"HD_EPB_BASAMO",
+         "Discounted gross amount":"HD_EPB_DISCGROS"
+      }
+   },
+   "Aggregation":{
+    "Customer":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_CUS_NAME"
+        ],
+        "format":"string"
+      },
+      "Number":{
+        "code":"customer_number",
+        "attributes":[
+          "HD_CUS_CUSID"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_CUS_NAME",
+          "HD_CUS_ADL1",
+          "HD_CUS_ADL2",
+          "HD_CUS_CITY",
+          "HD_CUS_ZIP",
+          "HD_CUS_COUN"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_CUS_VATID"
+        ],
+        "format":"string"
+      },
+      "Phone":{
+        "code":"phone",
+        "attributes":[
+          "HD_CUS_TEL"
+        ],
+        "format":"string"
+      },
+      "Fax":{
+        "code":"fax",
+        "attributes":[
+          "HD_CUS_FAX"
+        ],
+        "format":"string"
+      }
+    },
+    "Supplier":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_SUP_NAME"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_SUP_NAME",
+          "HD_SUP_ADL1",
+          "HD_SUP_ADL2",
+          "HD_SUP_CITY",
+          "HD_SUP_ZIP",
+          "HD_SUP_COUNTRY"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_SUP_VAT"
+        ],
+        "format":"string"
+      },
+      "Tax Number":{
+        "code":"tax_number",
+        "attributes":[
+          "HD_SUP_TAX"
+        ],
+        "format":"string"
+      },
+      "Phone":{
+        "code":"phone",
+        "attributes":[
+          "HD_SUP_TEL"
+        ],
+        "format":"string"
+      },
+      "Fax":{
+        "code":"fax",
+        "attributes":[
+          "HD_SUP_FAX"
+        ],
+        "format":"string"
+      },
+      "Contact":{
+        "code":"contact",
+        "attributes":[
+          "HD_SUP_CONT"
+        ],
+        "format":"string"
+      },
+      "Banking Informations":[
+        {
+          "IBAN":{
+            "code":"iban",
+            "attributes":[
+              "HD_SUP_IBAN"
+            ],
+            "format":"string"
+          }
+        },
+        {
+          "BIC":{
+            "code":"bic",
+            "attributes":[
+              "HD_SUP_BIC"
+            ],
+            "format":"string"
+          }
+        }
+      ]
+    },
+    "General":{
+      "Currency":{
+        "code":"currency",
+        "attributes":[
+           "HD_GEN_CURR"
+        ],
+        "format":"string"
+      },
+      "Order Date":{
+        "code":"order_date",
+        "attributes":[
+          "HD_GEN_ORDDATE"
+        ],
+        "format":"string"
+      },
+      "Order Confirmation Date":{
+        "code":"order_confirmation_date",
+        "attributes":[
+          "HD_GEN_CONFDATE"
+        ],
+        "format":"string"
+      },
+      "Delivery Date":{
+        "code":"delivery_date",
+        "attributes":[
+          "HD_GEN_DELDATE"
+        ],
+        "format":"string"
+      },
+      "Due Date":{
+        "code":"due_date",
+        "attributes":[
+          "HD_GEN_DUEDATE"
+        ],
+        "format":"string"
+      },
+      "Payment methods":[
+        {
+          "Payment Methods":{
+            "code":"payment_methods",
+            "attributes":[
+              "HD_GEN_PAYMET"
+            ],
+            "format":"string"
+          }
+        }
+      ],
+      "Order Number":{
+        "code":"order_number",
+        "attributes":[
+          "HD_GEN_ORDNUM"
+        ],
+        "format":"string"
+      },
+      "Order Confirmation":{
+        "code":"order_confirmation_number",
+        "attributes":[
+          "HD_GEN_CONFNUM"
+        ],
+        "format":"string"
+      },
+      "Order Communication":{
+        "code":"order_communication",
+        "attributes":[
+          "HD_INV_COMM"
+        ],
+        "format":"string"
+      },
+      "Delivery Method":{
+        "code":"delivery_method",
+        "attributes":[
+          "HD_GEN_DELMET"
+        ],
+        "format":"string"
+      },
+      "Delivery Conditions":{
+        "code":"delivery_conditions",
+        "attributes":[
+          "HD_GEN_DELCOND"
+        ],
+        "format":"string"
+      },
+      "Delivery Carrier":{
+        "code":"delivery_carrier",
+        "attributes":[
+          "HD_GEN_DELCAR"
+        ],
+        "format":"string"
+      },
+      "Delivery Costs":{
+        "code":"delivery_costs",
+        "attributes":[
+          "HD_GEN_DELCOST"
+        ],
+        "format":"string"
+      },
+      "Tax Amount":{
+        "code":"tax_amount",
+        "attributes":[
+          "HD_GEN_TAXAMO"
+        ],
+        "format":"general_number"
+      },
+      "Net Amount":{
+        "code":"net_amount",
+        "attributes":[
+          "HD_GEN_NETAMO"
+        ],
+        "format":"general_number"
+      },
+      "Gross Amount":{
+        "code":"gross_amount",
+        "attributes":[
+          "HD_GEN_GROAMO"
+        ],
+        "format":"general_number"
+      }
+    },
+    "Tax Calculation":[
+      {
+        "Tax Rate":{
+          "code":"tax_rate",
+          "attributes":[
+            "HD_GEN_TAXRAT"
+          ],
+          "format":"tax_with_unit"
+        }
+      },
+      {
+        "Tax Code":{
+          "code":"tax_code",
+          "attributes":[
+            "HD_GEN_TAXCOD"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Tax Amount":{
+          "code":"tax_amount",
+          "attributes":[
+            "HD_GEN_TAXAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Net Amount":{
+          "code":"net_amount",
+          "attributes":[
+            "HD_GEN_NETAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Gross Amount":{
+          "code":"gross_amount",
+          "attributes":[
+            "HD_GEN_GROAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ],
+    "Early Payment Benefit":[
+      {
+        "Early Payment Date":{
+          "code":"early_payment_date",
+          "attributes":[
+            "HD_EPB_DATE"
+          ],
+          "format":"period"
+        }
+      },
+      {
+        "Discount Percent":{
+          "code":"discount_percentage",
+          "attributes":[
+            "HD_EPB_DISCPER"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Discount Amount":{
+          "code":"discount_amount",
+          "attributes":[
+            "HD_EPB_DISCEUR"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Base Amount":{
+          "code":"base_amount",
+          "attributes":[
+            "HD_EPB_BASAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+      ,
+      {
+        "Discounted Amount":{
+          "code":"discounted_amount",
+          "attributes":[
+            "HD_EPB_DISCGROS"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ],
+    "Line Item":[
+      {
+        "Article ID":{
+          "code":"article_id",
+          "attributes":[
+            "HD_ART_ARTID"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Description":{
+          "code":"description",
+          "attributes":[
+          "HD_ART_DESC1",
+          "HD_ART_DESC2"
+        ],
+          "format":"string"
+        }
+      },
+      {
+        "Quantity":{
+          "code":"quantity",
+          "attributes":[
+            "HD_ART_QUAT"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Position":{
+          "code":"position",
+          "attributes":[
+            "HD_ART_POS"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Supplier SKU":{
+          "code":"supplier_sku",
+          "attributes":[
+            "HD_ART_SKU"
+          ],
+          "format":"period"
+        }
+      },
+      {
+        "EAN":{
+          "code":"ean",
+          "attributes":[
+            "HD_ART_EAN"
+          ],
+          "format":"period"
+        }
+      },
+      {
+        "Discount":{
+          "code":"discount",
+          "attributes":[
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Tax Rate":{
+          "code":"tax_rate",
+          "attributes":[
+          ],
+          "format":"tax_with_unit"
+        }
+      },
+      {
+        "Tax Code":{
+          "code":"tax_code",
+          "attributes":[
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Unit Price":{
+          "code":"unit_price",
+          "attributes":[
+            "HD_ART_UNPRIC"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Total Price":{
+          "code":"total_price",
+          "attributes":[
+            "HD_ART_UNTOT"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Delivery Date":{
+          "code":"delivery_date",
+          "attributes":[
+          ],
+          "format":"string"
+        }
+      },
+    ]
+  }
+}

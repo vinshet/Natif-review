@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>natif.ai | Register</title>
+
+    <link href="/plugins/natif-review/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/animate.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/style.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <div class="container p-5">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="mx-auto d-block w-100" src="/plugins/natif-review/resource/css/patterns/natif-n-logo.png">
+                    </div>
+                </div>
+            </div>
+            <h3>Register to natif.ai</h3>
+            <p>Want an account to put AI to work?</p>
+            <p>Please submit your email address, you will then receive an email to finalise your demo account</p>
+            <form class="m-t" role="form" id="page_form" onsubmit="return false" >
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" name="email" id="email" required="">
+                </div>
+                <div class="form-group">
+                    <p>Demo accounts are limited to 100 documents per month. Please contact us at account@natif.ai if you wish to benefit from a production account </p>
+                    <div class="checkbox i-checks"><label><input type="checkbox" required=""><i></i> Agree to the <a href="https://natif.ai/wp-content/uploads/2021/03/Allgemeine-Gescha%CC%88ftsbedingungen.pdf">terms and policy</a> </label></div>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/plugins/natif-idp/resource/login.html">Login</a>
+            </form>
+            <p class="m-t"> <small>natif.ai GmbH &copy; 2019-2020</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/plugins/natif-review/resource/js/jquery-3.1.1.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.session.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/conf.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/pwstrength/pwstrength-bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var options1 = {};
+            options1.ui = {
+                container: "#pwd-container",
+                showVerdictsInsideProgressBar: true,
+                viewports: {
+                    progress: ".pwstrength_viewport_progress"
+                }
+
+            };
+            options1.common = {
+                debug: false
+            };
+            $("#password").pwstrength(options1);
+
+        })
+    </script>
+    <script>
+ function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+        function create_customer(mgt_token)
+        {
+            var uuid=uuidv4();
+            $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: {
+                       name : "dataiku_"+uuid
+                    },
+                    type: 'POST',
+					headers: {Authorization:'Bearer '+mgt_token},
+                    url: api_host+'/user-management/customer',
+                    success:function(data) {
+                        create_user(mgt_token, data["id"]);
+                    },
+                    error:function(e) {toastr.error(e.responseJSON.detail, {timeOut: 5000})},
+                    fail:function(e) {toastr.error(e.responseJSON.detail, {timeOut: 5000})}
+                })
+        }
+
+        function create_user(mgt_token,customerid)
+        {
+            $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: {
+                        email : $("#email").val(),
+                        customer_id : customerid,
+                        role: "demo"
+                    },
+                    type: 'POST',
+                    headers: {Authorization:'Bearer '+mgt_token},
+                    url: api_host+'/user-management/user',
+                    success:function() {
+                        var tID = setTimeout(function () {
+                            window.location.href = "/plugins/natif-review/resource/login.html";
+                            window.clearTimeout(tID);		// clear time out.
+                        }, 3500);
+                        toastr.success("You will receive an email shortly, please follow the instructions", {timeOut: 5000});
+                    },
+                    error:function(e) {toastr.error(e.responseJSON.detail, {timeOut: 5000})},
+                    fail:function(e) {toastr.error(e.responseJSON.detail, {timeOut: 5000})}
+                })
+        }
+
+        $(document).ready(function(){
+            $("#page_form").submit(function(){
+
+                $.ajax({
+                    contentType: 'application/x-www-form-urlencoded',
+                    data: {
+                        username : 'dataikudemocreator@natif.ai',
+                        password : 'RA8BC2aZ2pyMXbK7!',
+                        grant_type: 'password',
+                        scope:'user_management'
+                    },
+                    type: 'POST',
+                    url: api_host+'/token',
+                    success:function(data){
+                        create_customer(data.access_token)
+                    },
+                    fail:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});},
+                    error:function(data){console.log(data);toastr.error(data.responseJSON.detail, {timeOut: 5000});}
+                })
+            });
+        });
+
+    </script>
+</body>
+
+</html>

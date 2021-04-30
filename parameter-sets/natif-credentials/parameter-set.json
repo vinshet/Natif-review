@@ -1,0 +1,20 @@
+/* This file is the descriptor for the parameter set natif-credentials */
+{
+    "meta" : {
+        "label": "Parameter set natif-credentials",
+        "description": "Username and password for the NATIF service",
+        "icon": "icon-unlock-alt"
+    },
+    "defaultDefinableInline": false,
+    "defaultDefinableAtProjectLevel": true,
+    "params": [
+        {
+          "type": "CREDENTIAL_REQUEST",
+          "name": "login_credentials",
+          "label": "login credentials",
+          "credentialRequestSettings": {
+            "type": "BASIC"
+            }
+        }
+            ]
+}

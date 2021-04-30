@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Minor view</title>
+
+    <link href="/plugins/natif-review/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/plugins/natif-review/resource/css/animate.css" rel="stylesheet">
+
+    <link href="/plugins/natif-review/resource/css/plugins/footable/footable.bootstrap.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/plugins/datapicker/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/documents.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/css/style.css" rel="stylesheet">
+    <link href="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.css" rel="stylesheet">
+
+</head>
+
+<body class="md-skin">
+
+<div id="wrapper">
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="#"  onclick="resetandlogout()">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Documents</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">
+                        <strong>Documents</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+                <!--div class="container d-flex h-100">
+                    <div class="row justify-content-center align-self-center">
+                        <button type="button" class="btn btn-block btn-outline btn-primary">Upload Document</button>
+                    </div>
+                </div-->
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row" id="dropbox" style="display:none;">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>Upload your Documents</h5>&nbsp;&nbsp;&nbsp;<select id="upl_doctype"><option value="other">Ocr</option><option value="invoice">Invoice</option><option value="order_confirmation">Order Confirmation</option><option value="delivery_note">Delivery Note</option></select>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content m-b-sm border-bottom" style="display: none;" >
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="#" class="dropzone" name="dropzoneForm" id="dropzoneForm" enctype="multipart/form-data">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content m-b-sm border-bottom">
+                            <div class="row">
+                                <div class="col-lg-8 form-group">
+                                    <label class="font-normal">Date Period</label>
+                                    <div class="input-daterange input-group">
+                                        <input type="text" class="form-control-sm form-control" name="start" id="date_from">
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" class="form-control-sm form-control" name="end" id="date_to">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 form-group">
+                                    <label class="font-normal">AI Process</label>
+                                    <select class="form-control m-b" name="status" id="status">
+                                            <option value="all">All</option>
+                                            <option value="success">Success</option>
+                                            <option value="reviewed">Reviewed</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="failed">Failed</option>
+                                    </select>
+                                </div>
+                                 <div class="col-lg-2 form-group" id="pprocess" style="display: none">
+                                    <label class="font-normal" >Post Process</label>
+                                    <select class="form-control m-b" name="pps" id="postprocessing_status">
+                                            <option value="all">All</option>
+                                            <option value="reviewed">Reviewed</option>
+                                            <option value="toreview">To Review</option>
+                                            <option value="manual">Manual</option>
+                                            <option value="auto">Auto</option>
+                                            <option value="warning">Warning</option>
+                                            <option value="rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button onclick="search();" type="button" class="btn btn-primary block float-lg-right">Search</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <table id="document-table" class="table" data-paging="true"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+    <script src="/plugins/natif-review/resource/js/jquery-3.1.1.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.session.js"></script>
+    <script src="/plugins/natif-review/resource/js/popper.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/bootstrap.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/toaster/toastr.min.js"></script>
+    <script src="/plugins/natif-review/resource/js/conf.js"></script>
+    <script src="/plugins/natif-review/resource/js/plugins/session/jquery.sessioncheck.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/plugins/natif-review/resource/js/inspinia.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/pace/pace.min.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/footable/footable.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/dropzone/dropzone.js"></script>
+<script src="/plugins/natif-review/resource/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/plugins/natif-review/resource/js/documents.js"></script>
+</body>
+
+</html>

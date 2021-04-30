@@ -1,0 +1,358 @@
+{
+  "Attributes": {
+    "Receiver": {
+      "REC Name": "HD_CUS_NAME",
+      "REC Address line 1": "HD_CUS_ADL1",
+      "REC Address line 2": "HD_CUS_ADL2",
+      "REC City": "HD_CUS_CITY",
+      "REC Zip": "HD_CUS_ZIP",
+      "REC Country": "HD_CUS_COUN",
+      "REC VAT ID": "HD_CUS_VATID",
+      "REC Tax ID": "HD_CUS_TAXID",
+      "REC EORI": "HD_CUS_EORI"
+    },
+    "Sender": {
+      "SEN Name": "HD_VEN_NAME",
+      "SEN Address line 1": "HD_VEN_ADL1",
+      "SEN Address line 2": "HD_VEN_ADL2",
+      "SEN City": "HD_VEN_CITY",
+      "SEN Zip": "HD_VEN_ZIP",
+      "SEN Country": "HD_VEN_COUN",
+      "SEN VAT ID": "HD_VEN_VATID",
+      "SEN Tax ID": "HD_VEN_TAXID",
+      "SEN Tel": "HD_VEN_TEL",
+      "SEN Fax": "HD_VEN_FAX",
+      "SEN Website": "HD_VEN_WWW",
+      "SEN Email": "HD_VEN_EMAIL",
+      "SEN EORI": "HD_VEN_EORI"
+    },
+    "General": {
+      "Delivery Note Number": "HD_NOTE_NUM",
+      "Document Date": "HD_NOTE_DPER",
+      "Shipping Date/Period": "HD_NOTE_SHPE",
+      "Delivering Date": "HD_NOTE_DDAT",
+      "Order Number": "HD_INV_ORDNU",
+      "Order Confirmation": "HD_INV_ORDCO",
+      "Shipping Number": "HD_NOTE_SHINU",
+      "Customer Number": "HD_NOTE_CUSNU",
+      "Total weight": "HD_TOT_WEI",
+      "Total Quantity": "HD_TOT_QTY",
+      "Value of Delivery": "HD_NOTE_VOD",
+      "Origin of Goods": "HD_NOTE_OOG"
+    },
+    "Article": {
+      "Article ID": "SD_PS_ARTID",
+      "Description": "SD_PS_DESCR",
+      "Quantity Ordered": "SD_PS_QTYO",
+      "Quantity Delivered": "SD_PS_QTYD",
+      "Position": "SD_PS_POSI",
+      "Unit": "SD_PS_UNIT",
+      "Weight": "SD_PS_WEI"
+    }
+  },"Aggregation":{
+    "Receiver":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_CUS_NAME"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_CUS_NAME",
+          "HD_CUS_ADL1",
+          "HD_CUS_ADL2",
+          "HD_CUS_CITY",
+          "HD_CUS_ZIP",
+          "HD_CUS_COUN"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_CUS_VATID"
+        ],
+        "format":"string"
+      },
+      "Tax Number":{
+        "code":"tax_number",
+        "attributes":[
+          "HD_CUS_TAXID"
+        ],
+        "format":"string"
+      },
+      "EORI Number":{
+        "code":"eori_number",
+        "attributes":[
+          "HD_CUS_EORI"
+        ],
+        "format":"string"
+      },
+      "Customer Number":{
+        "code":"customer_number",
+        "attributes":[
+          "HD_INV_CUSNU"
+        ],
+        "format":"string"
+      },
+      "Banking Informations":[
+        {
+          "IBAN":{
+            "code":"iban",
+            "attributes":[
+              "HD_CUS_IBAN"
+            ],
+            "format":"string"
+          }
+        },
+        {
+          "BIC":{
+            "code":"bic",
+            "attributes":[
+              "HD_CUS_BIC"
+            ],
+            "format":"string"
+          }
+        }
+      ]
+    },
+    "Sender":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_VEN_NAME"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_VEN_NAME",
+          "HD_VEN_ADL1",
+          "HD_VEN_ADL2",
+          "HD_VEN_CITY",
+          "HD_VEN_ZIP",
+          "HD_VEN_COUN"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_VEN_VATID"
+        ],
+        "format":"string"
+      },
+      "Tax Number":{
+        "code":"tax_number",
+        "attributes":[
+          "HD_VEN_TAXID"
+        ],
+        "format":"string"
+      },
+      "EORI Number":{
+        "code":"eori_number",
+        "attributes":[
+          "HD_VEN_EORI"
+        ],
+        "format":"string"
+      },
+      "Register ID":{
+        "code":"register_id",
+        "attributes":[
+          "HD_VEN_REGID"
+        ],
+        "format":"string"
+      },
+      "Phone":{
+        "code":"phone",
+        "attributes":[
+          "HD_VEN_TEL"
+        ],
+        "format":"string"
+      },
+      "Fax":{
+        "code":"fax",
+        "attributes":[
+          "HD_VEN_FAX"
+        ],
+        "format":"string"
+      },
+      "Url":{
+        "code":"url",
+        "attributes":[
+          "HD_VEN_WWW"
+        ],
+        "format":"string"
+      },
+      "Email":{
+        "code":"e_mail",
+        "attributes":[
+          "HD_VEN_EMAIL"
+        ],
+        "format":"string"
+      }
+    },
+    "General":{
+      "Number":{
+        "code":"number",
+        "attributes":[
+         "HD_NOTE_NUM"
+        ],
+        "format":"string"
+      },
+      "Date":{
+        "code":"date",
+        "attributes":[
+          "HD_NOTE_DPER"
+        ],
+        "format":"string"
+      },
+      "Order Number":{
+        "code":"order_number",
+        "attributes":[
+          "HD_INV_ORDNU"
+        ],
+        "format":"string"
+      },
+      "Order Confirmation":{
+        "code":"order_confirmation_number",
+        "attributes":[
+          "HD_INV_ORDCO"
+        ],
+        "format":"string"
+      },
+      "Shipping Date":{
+        "code":"shipping_date",
+        "attributes":[
+          "HD_NOTE_SHPE"
+        ],
+        "format":"string"
+      },
+      "Delivery Date":{
+        "code":"delivery_date",
+        "attributes":[
+          "HD_NOTE_DDAT"
+        ],
+        "format":"string"
+      },
+      "Shipping Number":{
+        "code":"shipping_number",
+        "attributes":[
+          "HD_NOTE_SHINU"
+        ],
+        "format":"string"
+      },
+      "Shipping Number":{
+        "code":"shipping_number",
+        "attributes":[
+          "HD_NOTE_SHINU"
+        ],
+        "format":"string"
+      },
+      "Customer Number":{
+        "code":"customer_number",
+        "attributes":[
+          "HD_NOTE_CUSNU"
+        ],
+        "format":"string"
+      },
+      "Total Weight":{
+        "code":"total_weight",
+        "attributes":[
+          "HD_TOT_WEI"
+        ],
+        "format":"general_number"
+      },
+      "Total Quantity":{
+        "code":"total_quantity",
+        "attributes":[
+          "HD_TOT_QTY"
+        ],
+        "format":"general_number"
+      },
+      "Value of the goods":{
+        "code":"total_goods_value",
+        "attributes":[
+          "HD_NOTE_VOD"
+        ],
+        "format":"general_number"
+      },
+      "Origin of the goods":{
+        "code":"origin_of_goods",
+        "attributes":[
+          "HD_NOTE_OOG"
+        ],
+        "format":"general_number"
+      }
+    },
+    "Goods":[
+      {
+        "Article ID":{
+          "code":"article_id",
+          "attributes":[
+            "SD_PS_ARTID"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Description":{
+          "code":"description",
+          "attributes":[
+            "SD_PS_DESCR"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Quantity Ordered":{
+          "code":"quantity_ordered",
+          "attributes":[
+            "SD_PS_QTYO"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Quantity Delivered":{
+          "code":"quantity_delivered",
+          "attributes":[
+            "SD_PS_QTYD"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Position":{
+          "code":"position",
+          "attributes":[
+            "SD_PS_POSI"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Unit":{
+          "code":"unit",
+          "attributes":[
+            "SD_PS_UNIT"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Weight":{
+          "code":"weight",
+          "attributes":[
+            "SD_PS_WEI"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ]
+  }
+}

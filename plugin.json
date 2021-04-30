@@ -1,0 +1,26 @@
+{
+    // Plugin identifiers are globally unique and only contain A-Za-z0-9_-
+    "id": "natif-review",
+
+    // It is highly recommended to use Semantic Versioning
+    "version": "0.0.1",
+
+    // Meta data for display purposes:
+    "meta": {
+        // label: name of the plugin as displayed, should be short
+        "label": "Natif - Intelligent document processing",
+        "description": "Plugin to leverage the Deep-OCR and intelligent capturing by natif.ai",
+
+        "author": "admin",
+
+        "icon": "icon-file-text",
+
+        // List of tags for filtering the list of plugins
+        "tags": ["Document processing","OCR","Extractions"], 
+
+        // URL where the user can learn more about the plugin
+        "url": "",
+
+        "licenseInfo": "Apache Software License"
+    }
+}

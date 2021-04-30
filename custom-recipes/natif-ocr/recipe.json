@@ -1,0 +1,47 @@
+// This file is the descriptor for the Custom code recipe natif-ocr
+{
+    "meta": {
+        "label": "Natif Deep OCR",
+        "description": "Extract text out of images into a dataset",
+        "icon": "icon-search"
+    },
+
+    "kind": "PYTHON",
+
+    "inputRoles": [
+        {
+            "name": "ocr_file_upload",
+            "label": "Deep OCR folder",
+            "description": "Folder containing the documents for Deep-OCR",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": false,
+            "acceptsManagedFolder":true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "ocr_data",
+            "label": "OCR dataset",
+            "description": "Dataset containing Deep-OCR from the documents",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true,
+            "acceptsManagedFolder":false
+        }
+    ],
+    "params": [
+        {
+          "type": "PRESET",
+          "name": "credentials",
+          "label": "NATIF credentials",
+          "parameterSetId": "natif-credentials",
+          "description":"Create a preset in the plugin settings and provide credentials under User center > Profile and settings > Credentials > Plugin Credentials"
+        }
+        ]
+    
+
+
+
+}

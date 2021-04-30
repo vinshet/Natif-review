@@ -1,0 +1,591 @@
+{
+  "Attributes":{
+    "Customer":{
+      "CUS Name":"HD_CUS_NAME",
+      "CUS Address line 1":"HD_CUS_ADL1",
+      "CUS Address line 2":"HD_CUS_ADL2",
+      "CUS City":"HD_CUS_CITY",
+      "CUS Zip":"HD_CUS_ZIP",
+      "CUS Country":"HD_CUS_COUN",
+      "CUS VAT ID":"HD_CUS_VATID",
+      "CUS Tax ID":"HD_CUS_TAXID",
+      "CUS IBAN":"HD_CUS_IBAN",
+      "CUS BIC":"HD_CUS_BIC",
+      "CUS Number":"HD_INV_CUSNU",
+      "CUS EORI":"HD_CUS_EORI"
+    },
+    "Vendor":{
+      "VEN Name":"HD_VEN_NAME",
+      "VEN Address line 1":"HD_VEN_ADL1",
+      "VEN Address line 2":"HD_VEN_ADL2",
+      "VEN City":"HD_VEN_CITY",
+      "VEN Zip":"HD_VEN_ZIP",
+      "VEN Country":"HD_VEN_COUN",
+      "VEN VAT ID":"HD_VEN_VATID",
+      "VEN Tax ID":"HD_VEN_TAXID",
+      "VEN IBAN":"HD_VEN_IBAN",
+      "VEN BIC":"HD_VEN_BIC",
+      "VEN Register ID":"HD_VEN_REGID",
+      "VEN Tel":"HD_VEN_TEL",
+      "VEN Fax":"HD_VEN_FAX",
+      "VEN Website":"HD_VEN_WWW",
+      "VEN Email":"HD_VEN_EMAIL",
+      "VEN EORI":"HD_VEN_EORI"
+    },
+    "Invoice":{
+      "Date":"HD_INV_DATE",
+      "Due Date/Period":"HD_INV_DPER",
+      "Service Date/Period":"HD_INV_SERPE",
+      "Order Number":"HD_INV_ORDNU",
+      "Confirmation Number":"HD_INV_ORDCO",
+      "Invoice Number":"HD_INV_INVNU",
+      "Communication":"HD_INV_COMM",
+      "Payment method":"HD_INV_PAYMET",
+      "Delivery note number":"HD_INV_DELNUM"
+    },
+    "Numbers":{
+      "Tax code":"HD_TAX_TCOD",
+      "Tax rate":"HD_TAX_TRATE",
+      "Tax amount":"HD_TAX_TAMO",
+      "Gross amount":"HD_TOTAL_GROSS",
+      "Net amount":"HD_TOTAL_NET",
+      "Intermediate amount":"HD_TOTAL_INTAMO",
+      "Amount due":"HD_TOTAL_DUE",
+      "Additional costs":"HD_TOTAL_ADDCO",
+      "Pre Payment":"HD_TOTAL_PREPAY"
+    },
+    "Early Payment Benefit":{
+      "Date/Period":"HD_EPB_PER",
+      "Percentage":"HD_EPB_PERCEN",
+      "Amount":"HD_EPB_AMO"
+    },
+    "Discounts":{
+      "Amount":"HD_DISC_AMO",
+      "Percentage":"HD_DISC_PERCEN"
+    },
+    "Products or Services":{
+      "Article ID":"SD_PS_ARTID",
+      "Description":"SD_PS_DESCR",
+      "Quantity":"SD_PS_QTY",
+      "Position":"SD_PS_POSI",
+      "Unit price":"SD_PS_UNIAMO",
+      "Unit total price":"SD_PS_UNITOTAMO"
+    }
+  },
+  "Aggregation":{
+    "Customer":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_CUS_NAME"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_CUS_NAME",
+          "HD_CUS_ADL1",
+          "HD_CUS_ADL2",
+          "HD_CUS_CITY",
+          "HD_CUS_ZIP",
+          "HD_CUS_COUN"
+        ],
+        "format":"string"
+      },
+      "Address Line1":{
+        "code":"address_line1",
+        "attributes":[
+          "HD_CUS_ADL1"
+        ],
+        "format":"string"
+      },
+      "Address Line2":{
+        "code":"address_line2",
+        "attributes":[
+          "HD_CUS_ADL2"
+        ],
+        "format":"string"
+      },
+      "City":{
+        "code":"city",
+        "attributes":[
+          "HD_CUS_CITY"
+        ],
+        "format":"string"
+      },
+      "Zip":{
+        "code":"zip",
+        "attributes":[
+          "HD_CUS_ZIP"
+        ],
+        "format":"string"
+      },
+      "Country":{
+        "code":"country",
+        "attributes":[
+          "HD_CUS_COUN"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_CUS_VATID"
+        ],
+        "format":"string"
+      },
+      "Tax Number":{
+        "code":"tax_number",
+        "attributes":[
+          "HD_CUS_TAXID"
+        ],
+        "format":"string"
+      },
+      "EORI Number":{
+        "code":"eori_number",
+        "attributes":[
+          "HD_CUS_EORI"
+        ],
+        "format":"string"
+      },
+      "Customer Number":{
+        "code":"customer_number",
+        "attributes":[
+          "HD_INV_CUSNU"
+        ],
+        "format":"string"
+      },
+      "Banking Informations":[
+        {
+          "IBAN":{
+            "code":"iban",
+            "attributes":[
+              "HD_CUS_IBAN"
+            ],
+            "format":"string"
+          }
+        },
+        {
+          "BIC":{
+            "code":"bic",
+            "attributes":[
+              "HD_CUS_BIC"
+            ],
+            "format":"string"
+          }
+        }
+      ]
+    },
+    "Vendor":{
+      "Name":{
+        "code":"name",
+        "attributes":[
+          "HD_VEN_NAME"
+        ],
+        "format":"string"
+      },
+      "Address":{
+        "code":"address",
+        "attributes":[
+          "HD_VEN_NAME",
+          "HD_VEN_ADL1",
+          "HD_VEN_ADL2",
+          "HD_VEN_CITY",
+          "HD_VEN_ZIP",
+          "HD_VEN_COUN"
+        ],
+        "format":"string"
+      },
+      "Address Line1":{
+        "code":"address_line1",
+        "attributes":[
+          "HD_VEN_ADL1"
+        ],
+        "format":"string"
+      },
+      "Address Line2":{
+        "code":"address_line2",
+        "attributes":[
+          "HD_VEN_ADL2"
+        ],
+        "format":"string"
+      },
+      "City":{
+        "code":"city",
+        "attributes":[
+          "HD_VEN_CITY"
+        ],
+        "format":"string"
+      },
+      "Zip":{
+        "code":"zip",
+        "attributes":[
+          "HD_VEN_ZIP"
+        ],
+        "format":"string"
+      },
+      "Country":{
+        "code":"country",
+        "attributes":[
+          "HD_VEN_COUN"
+        ],
+        "format":"string"
+      },
+      "VAT ID":{
+        "code":"vat_id",
+        "attributes":[
+          "HD_VEN_VATID"
+        ],
+        "format":"string"
+      },
+      "Tax Number":{
+        "code":"tax_number",
+        "attributes":[
+          "HD_VEN_TAXID"
+        ],
+        "format":"string"
+      },
+      "EORI Number":{
+        "code":"eori_number",
+        "attributes":[
+          "HD_VEN_EORI"
+        ],
+        "format":"string"
+      },
+      "Register ID":{
+        "code":"register_id",
+        "attributes":[
+          "HD_VEN_REGID"
+        ],
+        "format":"string"
+      },
+      "Phone":{
+        "code":"phone",
+        "attributes":[
+          "HD_VEN_TEL"
+        ],
+        "format":"string"
+      },
+      "Fax":{
+        "code":"fax",
+        "attributes":[
+          "HD_VEN_FAX"
+        ],
+        "format":"string"
+      },
+      "Website":{
+        "code":"website",
+        "attributes":[
+          "HD_VEN_WWW"
+        ],
+        "format":"string"
+      },
+      "Email":{
+        "code":"e_mail",
+        "attributes":[
+          "HD_VEN_EMAIL"
+        ],
+        "format":"string"
+      },
+      "Banking Informations":[
+        {
+          "IBAN":{
+            "code":"iban",
+            "attributes":[
+              "HD_VEN_IBAN"
+            ],
+            "format":"string"
+          }
+        },
+        {
+          "BIC":{
+            "code":"bic",
+            "attributes":[
+              "HD_VEN_BIC"
+            ],
+            "format":"string"
+          }
+        }
+      ]
+    },
+    "General":{
+      "Currency":{
+        "code":"currency",
+        "attributes":[
+
+        ],
+        "format":"string"
+      },
+      "Invoice Date":{
+        "code":"date",
+        "attributes":[
+          "HD_INV_DATE"
+        ],
+        "format":"string"
+      },
+      "Invoice Number":{
+        "code":"number",
+        "attributes":[
+          "HD_INV_INVNU"
+        ],
+        "format":"string"
+      },
+      "Due Date":{
+        "code":"due_date",
+        "attributes":[
+          "HD_INV_DPER"
+        ],
+        "format":"period"
+      },
+      "Service Date":{
+        "code":"service_period",
+        "attributes":[
+          "HD_INV_SERPE"
+        ],
+        "format":"period"
+      },
+      "Order Number":{
+        "code":"order_number",
+        "attributes":[
+          "HD_INV_ORDNU"
+        ],
+        "format":"string"
+      },
+      "Order Confirmation":{
+        "code":"order_confirmation_number",
+        "attributes":[
+          "HD_INV_ORDCO"
+        ],
+        "format":"string"
+      },
+      "Order Communication":{
+        "code":"order_communication",
+        "attributes":[
+          "HD_INV_COMM"
+        ],
+        "format":"string"
+      },
+      "Delivery Note":{
+        "code":"delivery_note_number",
+        "attributes":[
+          "HD_INV_DELNUM"
+        ],
+        "format":"string"
+      },
+      "Payment method":{
+        "code":"payment_method",
+        "attributes":[
+          "HD_INV_PAYMET"
+        ],
+        "format":"string"
+      },
+      "Tax Amount":{
+        "code":"tax_amount",
+        "attributes":[
+          "HD_TAX_TAMO"
+        ],
+        "format":"general_number"
+      },
+      "Net Amount":{
+        "code":"net_amount",
+        "attributes":[
+          "HD_TOTAL_NET"
+        ],
+        "format":"general_number"
+      },
+      "Gross Amount":{
+        "code":"gross_amount",
+        "attributes":[
+          "HD_TOTAL_GROSS"
+        ],
+        "format":"general_number"
+      },
+      "Additional Cost":{
+        "code":"additional_cost",
+        "attributes":[
+          "HD_TOTAL_ADDCO"
+        ],
+        "format":"general_number"
+      }
+    },
+    "Tax Calculation":[
+      {
+        "Tax Rate":{
+          "code":"tax_rate",
+          "attributes":[
+            "HD_TAX_TRATE"
+          ],
+          "format":"tax_with_unit"
+        }
+      },
+      {
+        "Tax Code":{
+          "code":"tax_code",
+          "attributes":[
+            "HD_TAX_TCOD"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Tax Amount":{
+          "code":"tax_amount",
+          "attributes":[
+            "HD_TAX_TAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Net Amount":{
+          "code":"net_amount",
+          "attributes":[
+            "HD_TOTAL_NET"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Gross Amount":{
+          "code":"gross_amount",
+          "attributes":[
+            "HD_TOTAL_GROSS"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ],
+    "Early Payment Benefit":[
+      {
+        "Early Payment Date":{
+          "code":"early_payment_date",
+          "attributes":[
+            "HD_EPB_PER"
+          ],
+          "format":"period"
+        }
+      },
+      {
+        "Discount Percent":{
+          "code":"discount_percent",
+          "attributes":[
+            "HD_EPB_PERCEN"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Discount Amount":{
+          "code":"discount_amount",
+          "attributes":[
+            "HD_EPB_AMO"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ],
+    "Line Item":[
+      {
+        "Article ID":{
+          "code":"article_id",
+          "attributes":[
+            "SD_PS_ARTID"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Description":{
+          "code":"description",
+          "attributes":[
+            "SD_PS_DESCR"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Quantity":{
+          "code":"quantity",
+          "attributes":[
+            "SD_PS_QTY"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Position":{
+          "code":"position",
+          "attributes":[
+            "SD_PS_POSI"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Service Period":{
+          "code":"service_period",
+          "attributes":[
+            "HD_INV_SERPE"
+          ],
+          "format":"period"
+        }
+      },
+      {
+        "Discount":{
+          "code":"discount",
+          "attributes":[
+            "HD_DISC_AMO",
+            "HD_DISC_PERCEN"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Tax Rate":{
+          "code":"tax_rate",
+          "attributes":[
+            "HD_TAX_TRATE"
+          ],
+          "format":"tax_with_unit"
+        }
+      },
+      {
+        "Tax Code":{
+          "code":"tax_code",
+          "attributes":[
+            "HD_TAX_TCOD"
+          ],
+          "format":"string"
+        }
+      },
+      {
+        "Tax Amount":{
+          "code":"tax_amount",
+          "attributes":[
+            "HD_TAX_TAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Unit Price":{
+          "code":"unit_price",
+          "attributes":[
+            "SD_PS_UNIAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      },
+      {
+        "Total Price":{
+          "code":"total_price",
+          "attributes":[
+            "SD_PS_UNITOTAMO"
+          ],
+          "format":"float_with_unit"
+        }
+      }
+    ]
+  }
+}

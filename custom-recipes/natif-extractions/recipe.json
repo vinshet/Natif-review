@@ -1,0 +1,98 @@
+// This file is the descriptor for the Custom code recipe natif-extractions
+{
+    "meta": {
+        "label": "Natif extractions",
+        "description": "Intelligent extraction of text with their attributes out of images into a dataset",
+        "icon": "icon-file-text"
+    },
+
+    "kind": "PYTHON",
+
+    "outputRoles": [
+        {
+            "name": "extractions_folder_structure",
+            "label": "Extractions folder structure",
+            "description": "Folder containing the documents placed within the document structure for extractions",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": false,
+            "acceptsManagedFolder":true
+        },
+        {
+            "name": "extractions_data",
+            "label": "Extractions dataset",
+            "description": "Dataset containing extractions from the documents",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true,
+            "acceptsManagedFolder":false
+        }
+    ],
+    "params": [
+        {
+            "name":"fold_structure",
+            "mandatory":false,
+            "label":"Create folder structure?",
+            "type": "BOOLEAN",
+            "defaultValue":true,
+            "description":"Creates a folder structure for document processing for extractions"
+        },
+        {
+            "name":"document_processing",
+            "mandatory":true,
+            "label":"Process documents for extraction?",
+            "type": "BOOLEAN",
+            "defaultValue":false,
+            "description":"Document processing for extractions post placing the files in the folder structure"
+        },
+        {
+            "name": "sep1",
+            "label": "Create document types for extractions",
+            "type": "SEPARATOR",
+            "visibilityCondition" : "model.fold_structure"
+        },
+        {
+            "name": "invoice",
+            "label": "Invoice",
+            "type": "BOOLEAN",
+            "defaultValue": false,
+            "description":"Invoice written with latin alphabet.+58 Data points (+ line items) will be extracted with their attributes",
+            "visibilityCondition" : "model.fold_structure"
+        },
+        {
+            "name": "order_confirmation",
+            "label": "Order confirmation",
+            "type": "BOOLEAN",
+            "defaultValue": false,
+            "description" : "Order confirmation written with latin alphabet. +58 Data points (+ line items) will be extracted with their attribute",
+            "visibilityCondition" : "model.fold_structure"
+        },
+        {
+            "name": "delivery_note",
+            "label": "Delivery note",
+            "type": "BOOLEAN",
+            "defaultValue": false,
+            "description":"Delivery notes written with latin alphabet.+40 Data points (+line items) will be extracted with their attributes",
+            "visibilityCondition" : "model.fold_structure"
+        },
+        {
+            "name": "sep2",
+            "label": "Credentials for document processing",
+            "type": "SEPARATOR",
+            "visibilityCondition" : "model.document_processing"
+        },
+        
+        {
+          "type": "PRESET",
+          "name": "credentials",
+          "label": "NATIF credentials",
+          "parameterSetId": "natif-credentials",
+          "description":"Create a preset in the plugin settings and provide credentials under User center > Profile and settings > Credentials > Plugin Credentials",
+          "visibilityCondition" : "model.document_processing"
+        }
+        ]
+    
+
+
+
+}
