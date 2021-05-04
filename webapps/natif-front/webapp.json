@@ -1,7 +1,7 @@
 // This file is the descriptor for webapp natif-front
 {
     "meta": {
-        "label": "Natif front-end",
+        "label": "Natif web app",
         "description": "Admin interface for the Intelligent Document Processing",
         "icon": "icon-code"
     },
