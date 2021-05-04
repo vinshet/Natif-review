@@ -23,7 +23,7 @@
     "outputRoles": [
         {
             "name": "ocr_data",
-            "label": "OCR dataset",
+            "label": "Deep OCR dataset",
             "description": "Dataset containing Deep-OCR from the documents",
             "arity": "UNARY",
             "required": true,
